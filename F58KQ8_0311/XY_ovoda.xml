@@ -1,0 +1,75 @@
+<ovoda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="XY_ovoda.xsd">
+	<csoport nev="süni">
+		<dolgozo id="1">
+			<nev>Kiss Júlia</nev>
+			<beosztas>óvónő</beosztas>
+			<szulido>1989</szulido>
+		</dolgozo>
+		<dolgozo id="2">
+			<nev>Nagy Mária</nev>
+			<beosztas>dajka</beosztas>
+			<szulido>1965</szulido>		
+		</dolgozo>
+		<gyerek jel="alma">
+			<nev>Szabó Péter</nev>
+			<szulido>2020</szulido>
+		</gyerek>
+		<gyerek jel="körte">
+			<nev>Okos Tóni</nev>
+			<szulido>2019</szulido>
+		</gyerek>	
+		<gyerek jel="virág">
+			<nev>Kovács Márta</nev>
+			<szulido>2019</szulido>
+		</gyerek>						
+    </csoport>
+		<csoport nev="maci">
+		<dolgozo id="3">
+			<nev>Gipsz Jolán</nev>
+			<beosztas>óvónő</beosztas>
+			<szulido>1980</szulido>
+		</dolgozo>
+		<dolgozo id="4">
+			<nev>Szép Etelka</nev>
+			<beosztas>dajka</beosztas>
+			<szulido>1968</szulido>		
+		</dolgozo>
+		<gyerek jel="alma">
+			<nev>Kiss Tamás</nev>
+			<szulido>2018</szulido>
+		</gyerek>
+		<gyerek jel="kocsi">
+			<nev>Nagy Zoltán</nev>
+			<szulido>2019</szulido>
+		</gyerek>
+		<gyerek jel="szilva">
+			<nev>Takács Lili</nev>
+			<szulido>2019</szulido>
+		</gyerek>						
+	</csoport>
+		<csoport nev="napocska">
+		<dolgozo id="5">
+			<nev>Varga Móni</nev>
+			<beosztas>óvónő</beosztas>
+			<szulido>1983</szulido>
+		</dolgozo>
+		<dolgozo id="6">
+			<nev>Pásztor Erzsi</nev>
+			<beosztas>dajka</beosztas>
+			<szulido>1975</szulido>		
+		</dolgozo>
+		<gyerek jel="dominó">
+			<nev>Szabó Virág</nev>
+			<szulido>2018</szulido>
+		</gyerek>
+		<gyerek jel="csillag">
+			<nev>Teszt Elek</nev>
+			<szulido>2019</szulido>
+		</gyerek>
+		<gyerek jel="alma">
+			<nev>Horváth Sára</nev>
+			<szulido>2019</szulido>
+		</gyerek>						
+	</csoport>	
+</ovoda>
