@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.MealMapper">
+	<resultMap id="mealResult" type="meal">
+		<id property="MID" column="MID" />
+		<result property="Name" column="Name" />
+		<result property="Price" column="Price" />
+		<result property="Category" column="Category" />
+	</resultMap>
+
+	<select id="findAllMeal" resultType="meal" resultMap="mealResult">
+		SELECT MID, Name, Price, Category FROM Meal
+	</select>
+
+	<select id="findMealById" parameterType="int" resultType="meal" resultMap="mealResult">
+		SELECT MID, Name, Price, Category FROM Meal WHERE
+		MID = #{mealId}
+	</select>
+	
+	<delete id="deleteMealById" parameterType="int">
+		    DELETE FROM Meal WHERE MID = #{mealId};
+	</delete>
+
+	<insert id="insertMeal" parameterType="meal" keyProperty="DID">
+		INSERT into Meal(MID, Name, Price, Category)
+		VALUES(#{MID},#{Name},#{Price},#{Category})
+	</insert>
+	
+	<select id="selectExpensiveMeal" resultType="meal" resultMap="mealResult">
+		SELECT MID, Name, Price, Category FROM Meal
+		ORDER BY Price DESC LIMIT 1;		
+	</select>
+	
+	<select id="selectCheapMeal" resultType="meal" resultMap="mealResult">
+		SELECT MID, Name, Price, Category FROM Meal
+		ORDER BY Price ASC LIMIT 1;
+	</select>
+
+</mapper>

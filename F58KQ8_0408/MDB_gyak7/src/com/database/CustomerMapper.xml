@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.database.CustomerMapper">        
+        <resultMap id="customerResult" type="customer">
+            <id property="CID" column="CID"/>
+            <result property="Address" column="Address"/>
+            <result property="Phonenumber" column="Phonenumber"/>
+        </resultMap>
+        
+        <select id="findAllCustomer" resultType="customer" resultMap="customerResult">
+            SELECT CID, Address, Phonenumber FROM Customer
+        </select>
+        
+        <select id="findCustomerById" parameterType="int" resultType="customer" resultMap="customerResult">
+            SELECT CID, Address, Phonenumber FROM Customer WHERE CID = #{customerId}
+        </select>
+        
+        <insert id="insertCustomer" parameterType="customer" keyProperty="Taxnumber">
+            INSERT into Customer(CID, Address, Phonenumber) 
+            	VALUES(#{CID},#{Address},#{Phonenumber})
+        </insert>
+        
+        <delete id="deleteCustomerById" parameterType="int">
+		    DELETE FROM Customer WHERE CID = #{customerId};
+		</delete>
+        
+    </mapper>

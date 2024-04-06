@@ -1,0 +1,36 @@
+CREATE DATABASE MDB_restaurant
+USE MDB_restaurant
+
+Create Table meal (MID int primary key, Name varchar(50), Price int , Category varchar(20))
+
+Create Table customer( CID int primary key, Address varchar(40), Phonenumber varchar(30))
+
+Create Table mealorder( MID int, foreign key(MID) references Meal(MID), CID int, foreign key(CID) references Customer(CID))
+
+
+
+insert into Customer values (1, 'Ady_Endre_utca-13', 0620111111);
+insert into Customer values (2, ' Kazincy_Ferenc_utca_1', 0620122222);
+insert into Customer values (3, 'Bartók_Béla_utca-4', 06201987654);
+insert into Customer values (4, 'Kuruc_utca-22', 06203125664);
+insert into Customer values (5, 'Törökverő_utca-2', 06207846635);
+insert into Customer values (6, 'Hársfa_utca-14', 0620353534);
+insert into Customer values (7, 'Bükk_utca-11', 0620110111);
+insert into Customer values (8, 'Ady_Endre_utca-5', 062044445633);
+insert into Customer values (9, 'Bartók_Béla_utca-5', 06203145160);
+insert into Customer values (10, 'Kuruc_utca-1', 06206677088);
+
+
+
+insert into Meal values(1, 'Margaréta', 1410,  'Pizza');
+insert into Meal values (2, 'Piedone', 1710, 'Pizza');
+insert into Meal values (3,  'Mexikói', 1850, 'Pizza');
+insert into Meal values (4, 'Magyaros', 1850, 'Pizzacity');
+insert into Meal values (5, 'Cordon_Blue_box', 2120, 'Húsétel');
+insert into Meal values (6, 'BBQ_csirkemell_box', 2120, 'Húsétel');
+insert into Meal values (7, 'Görög_Saláta', 2120, 'Saláta');
+insert into Meal values (8, 'Cézár_Saláta ', 1550, 'Saláta');
+insert into Meal values (9, 'Tonhal_Saláta', 1650, 'Saláta');
+insert into Meal values (10, 'Túrógomboc ', 750, 'Desszert');
+insert into Meal values (11, ' Borsodi_Betyár', 2120, 'Pizza');
+insert into Meal values (12, 'Ínyenc', 1850, 'Pizza');

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.concretepage.BookMapper">
+	<resultMap id="bookResult" type="book">
+		<id property="isbn" column="isbn" />
+		<result property="title" column="title" />
+		<result property="price" column="price" />
+	</resultMap>
+	<select id="findAllBooks" resultType="book"
+		resultMap="bookResult">
+		SELECT isbn, title, price FROM books
+	</select>
+	<insert id="insertBook" parameterType="book" keyProperty="isbn">
+		INSERT into books(isbn, title, price)
+		VALUES(#{isbn},#{title},#{price})
+	</insert>
+</mapper>

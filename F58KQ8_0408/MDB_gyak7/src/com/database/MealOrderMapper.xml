@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.database.MealOrderMapper">
+		<resultMap id="mealorderResult" type="mealorder">
+		    <result property="MID" column="MID"/>
+		    <result property="CID" column="CID"/>
+		</resultMap>
+		
+		<resultMap id="customerResult" type="customer">
+            <id property="CID" column="CID"/>
+			<result property="Address" column="Address" />
+			<result property="Phonenumber" column="Phonenumber" />
+        </resultMap>
+
+	    <select id="findAllCustomerRelationships" resultMap="mealorderResult">
+	        SELECT c.CID, m.MID
+	        FROM Customer c
+	        INNER JOIN MealOrder ON c.CID = MealOrder.CID
+	        INNER JOIN Meal m ON MealOrder.MID = m.MID;
+	    </select>
+	    
+	    <select id="findCustomersWhoOrdered" resultMap="customerResult">
+		    SELECT DISTINCT c.*
+		    FROM Customer c
+		    INNER JOIN MealOrder ON c.CID = MealOrder.CID;
+		</select>
+		
+		<delete id="deleteMealOrderForCustomer" parameterType="int">
+		    DELETE FROM MealOrder WHERE MID = #{MID};
+		</delete>
+		
+		<insert id="insertMealOrder" parameterType="mealorder">
+            INSERT into MealOrder(CID, MID) 
+            VALUES(#{CID},#{MID})
+        </insert>
+        
+    </mapper>
