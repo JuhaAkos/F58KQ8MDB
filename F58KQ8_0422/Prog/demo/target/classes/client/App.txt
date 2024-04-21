@@ -1,0 +1,60 @@
+package client;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.Block;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+public class App {
+	public App() {
+		super();
+	}
+	
+	public static void main(String[] args) {
+		App prog = new App();
+		prog.query_1();
+		prog.insert_1("12","Margaréta",1410,"Pizza");
+		prog.query_1();
+	}
+	
+	public void insert_1(String id,String name, int price, String category) {
+		try {
+			//com.mongodb.client.MongoClient mongo = new MongoClient( "localhost" , 27017 );
+            //MongoClient mongoClient = MongoClients.create("mongodb://hostOne:27017,hostTwo:27018");
+            MongoClient mongo = MongoClients.create("mongodb://localhost:27017");
+			MongoDatabase db = mongo.getDatabase("MDB_F58KQ8");
+			MongoCollection<Document> meals = db.getCollection("meal");
+			Document doc = new Document();
+			doc.put("_id", id);
+			doc.put("name", name);
+			doc.put("price", price);
+            doc.put("category", category);
+			meals.insertOne(doc);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		System.out.println("OK");
+	}
+	
+	public void query_1() {
+		try {
+			MongoClient mongo = MongoClients.create("mongodb://localhost:27017");
+			MongoDatabase db = mongo.getDatabase("MDB_F58KQ8");
+			MongoCollection<Document> meals = db.getCollection("meal");
+			FindIterable result = meals.find();
+			result.forEach(new Block<Document>() {
+				@Override
+				public void apply(final Document document) {
+					System.out.println(document);
+					}
+			});
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+			System.out.println("OK");
+		}
+	}
